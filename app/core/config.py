@@ -45,6 +45,8 @@ class Settings(BaseSettings):
     # Server settings
     HOST: str = os.getenv("HOST", "0.0.0.0")
     PORT: int = int(os.getenv("PORT", "12000"))
+    # Public base URL used to build absolute URLs for external services (e.g., SerpAPI)
+    PUBLIC_BASE_URL: str = os.getenv("PUBLIC_BASE_URL", "")
     
     # Performance settings
     CACHE_TTL: int = int(os.getenv("CACHE_TTL", "3600"))  # 1 hour
