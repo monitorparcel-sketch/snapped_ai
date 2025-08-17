@@ -262,7 +262,8 @@ async def search_products(
             logger.info(f"Using Cloudinary URL for search: {image_url}")
         else:
             # Convert local file path to URL for SerpAPI
-            image_url = f"https://{settings.HOST}:{settings.PORT}/static/uploads/{os.path.basename(image_path)}"
+            public = settings.PUBLIC_BASE_URL.strip('/') if settings.PUBLIC_BASE_URL else f"https://{settings.HOST}:{settings.PORT}"
+            image_url = f"{public}/static/uploads/{os.path.basename(image_path)}"
             logger.info(f"Using local URL for search: {image_url}")
         
         logger.info(f"Searching for products with image: {image_url}")
